@@ -12,8 +12,11 @@ dev.off()
 
 ## Import 2017-21 és 2022
 excelcols <- c("U", "X", "AA", "AD", "AG")
-currcol <- excelcols[1]
+MonthlyTemp <- list()
+for(tti in 1:length(excelcols)) {
+    currcol <- excelcols[tti]
 ## Read raw cols
 rawtemp <- read_excel("csapadék és hőmérséklet.xlsx", range = paste0("Havi T!",currcol,"2:",currcol,"73"), col_names = FALSE, col_types = "numeric")
 ## 
-matrix(as.numeric(rawtemp[,1,drop = TRUE]), ncol = 12, byrow = TRUE)
+    MonthlyTemp[[tti]] <- matrix(as.numeric(rawtemp[,1,drop = TRUE]), ncol = 12, byrow = TRUE)
+}
