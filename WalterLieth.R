@@ -36,3 +36,11 @@ rawtemp <- read_excel("csapadék és hőmérséklet.xlsx", range = paste0("Havi 
     colnames(MonthlyPrec[[tti]]) <- month.abb
     row.names(MonthlyPrec[[tti]]) <- 2017:2022
 }
+
+## WL table
+WLlist <- list()
+tti <- 1
+WLlist[[tti]] <- rbind(colMeans(MonthlyPrec[[tti]][1:5,]),
+                       apply(MonthlyTemp[[tti]][1:5,], 2, max),
+                       apply(MonthlyTemp[[tti]][1:5,], 2, min)
+                       )
