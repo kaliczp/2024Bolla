@@ -19,4 +19,6 @@ for(tti in 1:length(excelcols)) {
 rawtemp <- read_excel("csapadék és hőmérséklet.xlsx", range = paste0("Havi T!",currcol,"2:",currcol,"73"), col_names = FALSE, col_types = "numeric")
 ## 
     MonthlyTemp[[tti]] <- matrix(as.numeric(rawtemp[,1,drop = TRUE]), ncol = 12, byrow = TRUE)
+    colnames(MonthlyTemp[[tti]]) <- month.abb
+    row.names(MonthlyTemp[[tti]]) <- 2017:2022
 }
