@@ -11,6 +11,7 @@ diagwl(as.data.frame(rawstation[c(4,42,41),]),cols=NULL,stname=stationname,per="
 dev.off()
 
 ## Import 2017-21 és 2022
+## Temperature
 excelcols <- c("U", "X", "AA", "AD", "AG")
 MonthlyTemp <- list()
 for(tti in 1:length(excelcols)) {
@@ -21,4 +22,17 @@ rawtemp <- read_excel("csapadék és hőmérséklet.xlsx", range = paste0("Havi 
     MonthlyTemp[[tti]] <- matrix(as.numeric(rawtemp[,1,drop = TRUE]), ncol = 12, byrow = TRUE)
     colnames(MonthlyTemp[[tti]]) <- month.abb
     row.names(MonthlyTemp[[tti]]) <- 2017:2022
+}
+
+## Precipitation
+excelcols <- c("K", "N", "Q", "T", "W")
+MonthlyPrec <- list()
+for(tti in 1:length(excelcols)) {
+    currcol <- excelcols[tti]
+## Read raw cols
+rawtemp <- read_excel("csapadék és hőmérséklet.xlsx", range = paste0("Havi Csapadék!",currcol,"2:",currcol,"73"), col_names = FALSE, col_types = "numeric")
+## 
+    MonthlyPrec[[tti]] <- matrix(as.numeric(rawtemp[,1,drop = TRUE]), ncol = 12, byrow = TRUE)
+    colnames(MonthlyPrec[[tti]]) <- month.abb
+    row.names(MonthlyPrec[[tti]]) <- 2017:2022
 }
