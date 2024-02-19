@@ -45,3 +45,17 @@ WLlist[[tti]] <- rbind(colMeans(MonthlyPrec[[tti]][1:5,]),
                        apply(MonthlyTemp[[tti]][1:5,], 2, min)
                        )
 }
+StationNames <- c("M01_03", "M15_16", "M17", "M19", "M21")
+names(WLlist) <- StationNames
+
+tti <- 1
+diagwl(WLlist[[tti]],cols=NULL,stname=names(WLlist)[tti],per="2017-2021")
+par(mar = c(4, 4, 5, 4), las = 1, new = TRUE)
+plot(1:12, , type = "n",
+     xlim = c(0,12), ylim = c(-10,60),
+     xaxs = "i", yaxs = "i", 
+     xlab = "", ylab = "",
+     xaxt = "n", yaxt = "n",
+     bty = "n")
+lines(1:12-0.5, MonthlyPrec[[tti]]["2022",]/2, col = "#005ac8", lwd = 3)
+lines(1:12-0.5, MonthlyTemp[[tti]]["2022",], col = "#e81800", lwd = 3)
