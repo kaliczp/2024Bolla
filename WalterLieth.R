@@ -51,7 +51,7 @@ names(WLlist) <- StationNames
 pdf()
 for(tti in 1:length(WLlist)){
 diagwl(WLlist[[tti]],cols=NULL,stname=names(WLlist)[tti],per="2017-2021")
-par(mar = c(4, 4, 5, 4), las = 1, new = TRUE)
+par(mar = c(4, 4, 5, 4), las = 1, new = TRUE, family = "serif")
 plot(1:12, , type = "n",
      xlim = c(0,12), ylim = c(-10,60),
      xaxs = "i", yaxs = "i", 
