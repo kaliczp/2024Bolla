@@ -58,7 +58,9 @@ plot(1:12, , type = "n",
      xlab = "", ylab = "",
      xaxt = "n", yaxt = "n",
      bty = "n")
-lines(1:12-0.5, MonthlyPrec[[tti]]["2022",]/2, col = "#005ac8", lwd = 3)
+Prec2022Akt <- MonthlyPrec[[tti]]["2022",]/2
+Prec2022Akt[Prec2022Akt > 50] <- 50 + (Prec2022Akt[Prec2022Akt > 50] - 50) / 20
+lines(1:12-0.5, Prec2022Akt, col = "#005ac8", lwd = 3)
 lines(1:12-0.5, MonthlyTemp[[tti]]["2022",], col = "#e81800", lwd = 3)
 }
 dev.off()
