@@ -3,7 +3,7 @@
 ## https://climatol.eu/
 mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = NA, 
     stname = "", alt = NA, per = "", mlab = "", shem = FALSE, 
-    p3line = FALSE, ...) 
+    p3line = FALSE, addtemp = NULL, addprec = NULL, ...)
 {
     old.par <- par(no.readonly = TRUE)
     on.exit(par(old.par))
@@ -259,5 +259,8 @@ mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = 
     }
     for (i in 0:13) segments(i, 0, i, -1.5)
     mtext(mlab, 1, las = 1, line = 0.5, adj = 0.5, at = x[2:13])
-    invisible()
+    if(!is.null(addtemp)) 
+        lines(x, c(NA,addtemp,NA), col = tcol, lwd = 4)
+    if(!is.null(addprec)) 
+        lines(x, c(NA,addprec,NA), col = pcol, lwd = 4)
 }
