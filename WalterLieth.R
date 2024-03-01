@@ -45,7 +45,7 @@ WLlist[[tti]] <- rbind(colMeans(MonthlyPrec[[tti]][1:5,]),
                        apply(MonthlyTemp[[tti]][1:5,], 2, min)
                        )
 }
-StationNames <- c("M01_03", "M15_16", "M17", "M19", "M21")
+StationNames <- c("M01-03", "M15-16", "M17", "M19", "M21")
 names(WLlist) <- StationNames
 
 pdf()
