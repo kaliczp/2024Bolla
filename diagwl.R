@@ -115,8 +115,8 @@ mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = 
         lmin = 0
     axis(2, ((lmin/10):(ymax/10)) * 10, labels = labT, col.axis = tcol)
     axis(4, ((lmin/10):(ymax/10)) * 10, labels = labP, col.axis = pcol)
-    mtext("C", 2, col = tcol, las = 1, line = 3, adj = 0, at = 55)
-    mtext("mm", 4, col = pcol, las = 1, line = 3, adj = 1, at = 55)
+    mtext(expression(paste("Temperature [",degree,"C]")), 2, col = tcol, las = 3, line = 3, adj = 0.5, at = 25)
+    mtext("Precipitation [mm]", 4, col = pcol, las = 3, line = 3, adj = 0.5, at = 25)
     abline(0, 0)
     abline(50, 0)
     if (is.na(alt)) 
