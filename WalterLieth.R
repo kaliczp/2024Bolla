@@ -65,6 +65,14 @@ Prec2022Akt <- MonthlyPrec[[tti]]["2022",]/2
 Prec2022Akt[Prec2022Akt > 50] <- 50 + (Prec2022Akt[Prec2022Akt > 50] - 50) / 20
 lines(1:12-0.5, Prec2022Akt, col = "#005ac8", lwd = 3)
 lines(1:12-0.5, MonthlyTemp[[tti]]["2022",], col = "#e81800", lwd = 3)
+plot(1:12, , type = "n",
+     xlim = c(0,12), ylim = c(-10,60),
+     xaxs = "i", yaxs = "i", 
+     xlab = "", ylab = "",
+     xaxt = "n", yaxt = "n",
+     bty = "n")
+legend("bottomrigh", c("Temperature 2017-2021", "Precipitation 2017-2021", "Temperature 2022", "Precipitation 2022"),
+       lwd = c(2,2,3,3), col = c("#005ac8", "#e81800"))
 dev.off()
 
 ## figures without axis label
