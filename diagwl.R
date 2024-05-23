@@ -249,10 +249,10 @@ mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = 
         else if(errortext){mtext("(Likely frost months not provided)", 1, line = 1.5)}
     }
     else mtext("(No monthly frost risk provided)", 1, line = 1.5)
-    lines(xl[1:n2], yl[1:n2], col = pcol, lwd = 2)
+    lines(xl[1:n2], yl[1:n2], col = pcol, lwd = 1)
     if (p3line) 
         lines(x, yl3)
-    lines(x, c(tm[12], tm[1:12], tm[1]), col = tcol, lwd = 2)
+    lines(x, c(tm[12], tm[1:12], tm[1]), col = tcol, lwd = 1)
     if (nr > 2 & sumdata) {
         mtext(formatC(max(as.matrix(dat[2, ])), digits = 1, format = "f"), 
             2, las = 1, line = 2, at = 35)
