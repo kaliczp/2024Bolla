@@ -45,7 +45,7 @@ WLlist[[tti]] <- rbind(colMeans(MonthlyPrec[[tti]][1:5,]),
                        apply(MonthlyTemp[[tti]][1:5,], 2, min)
                        )
 }
-StationNames <- c("M01-03", "M15-16", "M17", "M19", "M21")
+StationNames <- c("M01 Common beech and M03 Sessile oak", "M15 Scots pine and M16 Sessile oak", "M17 Common beech", "M19 Black locust", "M21 Turkey oak")
 names(WLlist) <- StationNames
 
 pdf()
