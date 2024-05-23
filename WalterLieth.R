@@ -45,10 +45,10 @@ WLlist[[tti]] <- rbind(colMeans(MonthlyPrec[[tti]][1:5,]),
                        apply(MonthlyTemp[[tti]][1:5,], 2, min)
                        )
 }
-StationNames <- c("M01 Common beech and M03 Sessile oak", "M15 Scots pine and M16 Sessile oak", "M17 Common beech", "M19 Black locust", "M21 Turkey oak")
+StationNames <- c("M01 Beech and M03 Oak", "M15 Pine and M16 Oak", "M17 Beech", "M19 Black locust", "M21 Turkey oak")
 names(WLlist) <- StationNames
 
-pdf()
+pdf(width = 6.5 / 2.54, height = 6.5 / 2.54, pointsize = 8)
 par(family = "serif")
 for(tti in 1:length(WLlist)){
     mydiagwl(WLlist[[tti]], cols=NULL, stname = names(WLlist)[tti], per="2017-2021", mlab="en")
