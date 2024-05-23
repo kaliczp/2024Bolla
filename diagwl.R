@@ -120,7 +120,7 @@ mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = 
     abline(0, 0)
     abline(50, 0)
     if (is.na(alt)) 
-        mtext(stname, line = 2, adj = 0)
+        mtext(stname, line = 1, adj = 0, at = -1)
     else mtext(paste(stname, " (", alt, " m)", sep = ""), line = 2, 
         adj = 0)
     if(sumdata) {
