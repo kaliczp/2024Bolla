@@ -3,11 +3,9 @@
 ## https://climatol.eu/
 mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = NA, 
     stname = "", alt = NA, per = "", mlab = "", shem = FALSE, sumdata = FALSE, errortext = FALSE,
+    axislabels = TRUE,
     p3line = FALSE, addtemp = NULL, addprec = NULL, ...)
 {
-    old.par <- par(no.readonly = TRUE)
-    on.exit(par(old.par))
-    par(mar = c(4, 4, 5, 4), las = 1, new = FALSE)
     pcol = "#005ac8"
     tcol = "#e81800"
     pfcol = "#79e6e8"
@@ -115,8 +113,10 @@ mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = 
         lmin = 0
     axis(2, ((lmin/10):(ymax/10)) * 10, labels = labT, col.axis = tcol)
     axis(4, ((lmin/10):(ymax/10)) * 10, labels = labP, col.axis = pcol)
+    if(axislabels) {
     mtext(expression(paste("Temperature [",degree,"C]")), 2, col = tcol, las = 3, line = 3, adj = 0.5, at = 25)
     mtext("Precipitation [mm]", 4, col = pcol, las = 3, line = 3, adj = 0.5, at = 25)
+    }
     abline(0, 0)
     abline(50, 0)
     if (is.na(alt)) 

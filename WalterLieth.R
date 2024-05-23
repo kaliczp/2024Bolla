@@ -48,11 +48,34 @@ WLlist[[tti]] <- rbind(colMeans(MonthlyPrec[[tti]][1:5,]),
 StationNames <- c("M01 Beech and M03 Oak", "M15 Pine and M16 Oak", "M17 Beech", "M19 Black locust", "M21 Turkey oak")
 names(WLlist) <- StationNames
 
-pdf(width = 6.5 / 2.54, height = 6.5 / 2.54, pointsize = 8)
+pdf(width = 15.5 / 2.54, height = 6.5 / 2.54, pointsize = 9)
 par(family = "serif")
-for(tti in 1:length(WLlist)){
-    mydiagwl(WLlist[[tti]], cols=NULL, stname = names(WLlist)[tti], per="2017-2021", mlab="en")
-par(mar = c(4, 4, 5, 4), las = 1, new = TRUE)
+tti <- 1
+par(mfrow = c(1,2),mar = c(2, 4, 4, 4), las = 1)
+mydiagwl(WLlist[[tti]], cols=NULL, stname = names(WLlist)[tti], per="2017-2021", mlab="en")
+## Keep
+par(new = TRUE)
+plot(1:12, , type = "n",
+     xlim = c(0,12), ylim = c(-10,60),
+     xaxs = "i", yaxs = "i", 
+     xlab = "", ylab = "",
+     xaxt = "n", yaxt = "n",
+     bty = "n")
+Prec2022Akt <- MonthlyPrec[[tti]]["2022",]/2
+Prec2022Akt[Prec2022Akt > 50] <- 50 + (Prec2022Akt[Prec2022Akt > 50] - 50) / 20
+lines(1:12-0.5, Prec2022Akt, col = "#005ac8", lwd = 3)
+lines(1:12-0.5, MonthlyTemp[[tti]]["2022",], col = "#e81800", lwd = 3)
+dev.off()
+
+## figures without axis label
+pdf("Remainingwoaxislab.pdf", width = 13 / 2.54, height = 13 / 2.54, pointsize = 9)
+par(mfrow = c(2,2), mar = c(2, 4, 4, 4), las = 1, family = "serif")
+for(tti in 2:length(WLlist)){
+    par(mar = c(2, 2.5, 4, 2.5), las = 1)
+    mydiagwl(WLlist[[tti]], cols=NULL, stname = names(WLlist)[tti], per="2017-2021", mlab="en",
+             axislabels = FALSE)
+    ## Keep
+    par(new = TRUE)
 plot(1:12, , type = "n",
      xlim = c(0,12), ylim = c(-10,60),
      xaxs = "i", yaxs = "i", 
