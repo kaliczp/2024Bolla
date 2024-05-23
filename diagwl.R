@@ -2,7 +2,7 @@
 ## https://cran.r-project.org/web/packages/climatol
 ## https://climatol.eu/
 mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = NA, 
-    stname = "", alt = NA, per = "", mlab = "", shem = FALSE, 
+    stname = "", alt = NA, per = "", mlab = "", shem = FALSE, sumdata = FALSE, errortext = FALSE,
     p3line = FALSE, addtemp = NULL, addprec = NULL, ...)
 {
     old.par <- par(no.readonly = TRUE)
@@ -123,9 +123,11 @@ mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = 
         mtext(stname, line = 2, adj = 0)
     else mtext(paste(stname, " (", alt, " m)", sep = ""), line = 2, 
         adj = 0)
+    if(sumdata) {
     mtext(per, line = 1, adj = 0)
     mtext(paste(round(mean(tm), 1), " C        ", round(sum(p)), 
         " mm", sep = ""), line = 1, adj = 1)
+    }
     x <- 0:13 - 0.5
     p2 <- c(p[12], p[1:12], p[1])
     if (p3line) {
@@ -244,14 +246,14 @@ mydiagwl <- function (dat, cols = 1:6, format = "%Y-%m-%d", yeari = NA, yearf = 
                 if (dat[4, i] <= 0 && dat[3, i] > 0) 
                   rect(i - 1, -1.5, i, 0, col = pfcol)
             }
-        else mtext("(Likely frost months not provided)", 1, line = 1.5)
+        else if(errortext){mtext("(Likely frost months not provided)", 1, line = 1.5)}
     }
     else mtext("(No monthly frost risk provided)", 1, line = 1.5)
     lines(xl[1:n2], yl[1:n2], col = pcol, lwd = 2)
     if (p3line) 
         lines(x, yl3)
     lines(x, c(tm[12], tm[1:12], tm[1]), col = tcol, lwd = 2)
-    if (nr > 2) {
+    if (nr > 2 & sumdata) {
         mtext(formatC(max(as.matrix(dat[2, ])), digits = 1, format = "f"), 
             2, las = 1, line = 2, at = 35)
         mtext(formatC(min(as.matrix(dat[3, ])), digits = 1, format = "f"), 
