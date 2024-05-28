@@ -51,7 +51,7 @@ names(WLlist) <- StationNames
 ## figures without axis label
 pdf(width = 14 / 2.54, height = 21 / 2.54, pointsize = 9)
 
-png(width = 14, height = 21, unit = "cm", pointsize = 9, res = 600)
+png(width = 14, height = 21, unit = "cm", pointsize = 9, res = 800)
 par(mfrow = c(3,2), mar = c(2, 4, 4, 4), las = 1, family = "serif")
 for(tti in 1:length(WLlist)){
     par(mar = c(2, 2.5, 4, 2.5), las = 1)
